@@ -1,6 +1,9 @@
 /* --- HEADER --- */
 
 .header-wrapper{
+    position: fixed;
+    top: 0;
+    width: 100%;
     background: #003566;
     padding: 10px;
     color: #F2E9E4;

@@ -1,0 +1,38 @@
+/* ---- WELCOME PAGE ---- */
+
+.welcome-bg{
+    top: 0;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+}
+
+.welcome-container{
+    text-align: center;
+}
+
+.logworkout-btn-container {
+    align-self: center;
+    align-content: center;
+    margin-top: 20px;
+}
+
+.logworkout-btn-container p{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 30px;
+    margin-bottom: 4px;
+    color: #FFC300;
+}
+
+.logworkout-btn-container button{
+    background: #FFC300;
+    border-radius: 5px;
+    padding: 10px;
+    border-color: transparent;
+    color: #001D3D;
+    cursor: pointer;
+}
