@@ -1,0 +1,56 @@
+/* --- HEADER --- */
+
+.header-wrapper{
+    background: #003566;
+    padding: 10px;
+    color: #F2E9E4;
+    border-radius: 0px 0px 10px 10px;
+}
+
+.header-title{
+    font-size: 32px;
+    font-weight: 150;
+    margin-bottom: 0px;
+}
+
+.header-subtitle{
+    opacity: 0;
+    font-size: 14px;
+    font-weight: 150;
+    color: white;
+    cursor: pointer;
+    margin-top: -5px;
+    margin-bottom: 5px;
+}
+
+.header-content{
+    margin-top: 0px;
+}
+
+.header-title-wrapper{
+    cursor: pointer;
+    margin-top: 0px;
+}
+
+.header-title-wrapper:hover ~ .header-subtitle{
+    opacity: 1;
+    margin-bottom: 20px;
+    transition: all 0.5s ease-out;
+}
+
+.nav-wrapper{
+    margin-top: 30px;
+    margin-left: 95px;
+}
+
+.nav-item{
+    display: inline-block;
+    text-decoration: none;
+    color: #F2E9E4;
+    padding: 0px 20px;
+    cursor: pointer;
+}
+
+#header-item{
+    display: inline-block;
+}
