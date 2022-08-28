@@ -28,7 +28,12 @@ const Header = () => {
             */
             
             menuLinks.map((link, key) => {
-                return <p className="nav-item" key={key}>{link.label}</p>
+                return (
+                  <div className="nav-item">
+                    <p key={key}>{link.label}</p>
+                    <div className="nav-line"></div>
+                  </div>
+                )
             })
 
             }

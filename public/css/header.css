@@ -1,6 +1,9 @@
 /* --- HEADER --- */
 
 .header-wrapper{
+    position: fixed;
+    top: 0;
+    width: 100%;
     background: #003566;
     padding: 10px;
     color: #F2E9E4;
@@ -39,7 +42,7 @@
 }
 
 .nav-wrapper{
-    margin-top: 30px;
+    margin-top: 0px;
     margin-left: 95px;
 }
 
@@ -49,6 +52,23 @@
     color: #F2E9E4;
     padding: 0px 20px;
     cursor: pointer;
+}
+
+.nav-item p {
+    margin-bottom: 2px;
+    font-size: 20px;
+}
+
+.nav-line{
+    width: 0;
+    height: 1.5px;
+    background-color: #F2E9E4;
+    align-self: center;
+}
+
+.nav-item:hover .nav-line {
+    width: 100%;
+    transition: all 0.5s ease-in;
 }
 
 #header-item{
