@@ -1,21 +1,48 @@
 /* ---- WELCOME PAGE ---- */
 
-.welcome-bg{
-    top: 0;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-    z-index: -1;
+.welcome-image-container{
+    width: 85%;
+    height: 65%;
+    margin: auto;
+    margin-top: 145px;
+    display: flex;
+    padding: 20px;
+    background-color: #F4F3EE;
+    filter: drop-shadow(0px 0px 1.5px rgba(0,0,0,0.25));
+}
+
+.welcome-bg-img{
+    width: 60%;
+    flex: 6;
 }
 
 .welcome-container{
     text-align: center;
 }
 
+.welcome-image-text-container{  
+    flex: 4;
+}
+
+.welcome-image-text-tile{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 96px;
+    color: #001D3D;
+    margin-top: 0px;
+}
+
+.welcome-image-text-desc{
+    font-size: 24px;
+    text-justify: newspaper;
+    padding: 5px;
+    color: #003566;
+}
+
 .logworkout-btn-container {
     align-self: center;
     align-content: center;
-    margin-top: 20px;
 }
 
 .logworkout-btn-container p{
@@ -25,14 +52,24 @@
     font-size: 25px;
     line-height: 30px;
     margin-bottom: 4px;
-    color: #FFC300;
+    color: #003566;
+    transition: all 0.3s ease-in-out;
 }
 
 .logworkout-btn-container button{
-    background: #FFC300;
+    background: #003566;
     border-radius: 5px;
     padding: 10px;
     border-color: transparent;
-    color: #001D3D;
+    color: #F4F3EE;
     cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.logworkout-btn-container button:hover{
+    background: #507DBC;
+}
+
+#logworkout-btn:hover + #logworkout-btn-txt{
+    color: #507DBC;
 }
