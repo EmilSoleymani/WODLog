@@ -1,0 +1,20 @@
+[
+    {
+        "action": "Set Goals",
+        "icon": "TODO",
+        "content": "../Assets/PlaceholderImg.png",
+        "caption": "Boring explanation of the feature shown above."
+    },
+    {
+        "action": "See Analytics",
+        "icon": "TODO",
+        "content": "../Assets/PlaceholderImg.png",
+        "caption": "Boring explanation of the feature shown above."
+    },
+    {
+        "action": "View Programs",
+        "icon": "TODO",
+        "content": "../Assets/PlaceholderImg.png",
+        "caption": "Boring explanation of the feature shown above."
+    }
+]
