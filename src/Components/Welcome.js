@@ -1,6 +1,19 @@
+import { useEffect, useState } from 'react'
 import welcomeBg from '../Assets/WODLog_Home_Image.jpg'
+import welcomeActionsData from '../Data/welcomeActions.json'
+import img1 from '../Assets/PlaceholderImg.png'
 
 const Welcome = () => {
+  const [actionCount, setActionCount] = useState(0)
+
+  const getActionCount = () => {
+    setActionCount(Object.keys(welcomeActionsData).length)
+  }
+
+  useEffect(() => {
+    getActionCount()
+  }, [])
+
   return (
     <div className='welcome-container'>
       
@@ -16,7 +29,21 @@ const Welcome = () => {
               <button id="logworkout-btn">Log a Workout</button>
           </div>
         </div>
+      </div>
 
+      {/* WELCOME "ACTIONS" */}
+      <div className="welcome-actions-container">
+        {
+          welcomeActionsData.map((data, key) => {
+            return (
+              <div key={key} className="welcome-action-item" style={{flex: {actionCount}}}>
+                  <h2 className='welcome-action-title'>{data.action}</h2>
+                  <img src={img1} alt="Img"/>
+                  <p className='welcome-action-caption'>{data.caption}</p>
+              </div>
+            )
+          })
+        }
       </div>
 
     </div>
