@@ -74,7 +74,7 @@
 
 .welcome-actions-container{
     display: flex;
-    padding: 10px 30px;
+    padding: 10px;
     width: 85%;
     margin: auto;
     margin-top: 30px;
@@ -83,8 +83,9 @@
 
 .welcome-action-item{
     padding: 15px 10px;
-    width: 350px;
-    height: 350px;
+    margin-right: 5px;
+    width: 30%;
+    height: 27%;
     background-color: #F4F3EE;
     font-family: 'Inter';
     font-style: normal;
@@ -112,4 +113,31 @@
     font-size: 20px;
     line-height: 20px;
     text-align: center;
+}
+
+.signup-msg-container {
+    margin-top: 25px;
+}
+
+.signup-msg {
+    color: #003566;
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+
+.signup-msg-btn {
+    background: #003566;
+    border-radius: 5px;
+    padding: 10px;
+    border-color: transparent;
+    color: #F4F3EE;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.signup-msg-btn:hover {
+    background: #F4F3EE;
+    color: #001D3D;
+    border-color: #001D3D;
 }

@@ -46,6 +46,11 @@ const Welcome = () => {
         }
       </div>
 
+      <div className="signup-msg-container">
+        <p className="signup-msg">To set goals, view trends, and see suggested programs</p>
+        <button className="signup-msg-btn">Sign Up</button>
+      </div>
+
     </div>
   )
 }
