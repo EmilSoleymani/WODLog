@@ -3,36 +3,19 @@ import { useState, useEffect } from "react"
 import { v4 as uuidv4 } from 'uuid';
 
 // Components
-import Increment from './Increment';
 // import LogItem from './LogItem';
 
-// Font Awesome
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 // DayPicker
-/*
-import DayPickerInput from 'react-day-picker/DayPickerInput';
-import { DateUtils } from 'react-day-picker';
-import 'react-day-picker/lib/style.css';
-import dateFnsFormat from 'date-fns/format';
-import dateFnsParse from 'date-fns/parse';
+import { DayPicker } from 'react-day-picker';
+import 'react-day-picker/dist/style.css';
+import { format } from 'date-fns';
 
-function parseDate(str, format, locale) {
-  const parsed = dateFnsParse(str, format, new Date(), { locale });
-  if (DateUtils.isDate(parsed)) {
-    return parsed;
-  }
-  return undefined;
+function formatDate(newDate) {
+  return format(newDate, "MM/dd/yyyy")
 }
-
-function formatDate(date, format, locale) {
-  return dateFnsFormat(date, format, { locale });
-}
-*/
 
 const Log = () => {
-  const [date, setDate] = useState("")
+  const [date, setDate] = useState(new Date())
   const [workout, setWorkout] = useState("")
   const [repCount, setRepCount] = useState(0) 
   const [setsCount, setSetsCount] = useState(0)
@@ -57,42 +40,6 @@ const Log = () => {
     //getLogs()
   }, [])
 
-  const decrementRepCount = () => {
-    if(repCount === 0) return
-    setRepCount(repCount-1)
-  }
-
-  const incrementRepCount = () => {
-    setRepCount(repCount+1)
-  }
-
-  const decrementSetsCount = () => {
-    if(setsCount === 0) return
-    setSetsCount(setsCount-1)
-  }
-
-  const incrementSetsCount = () => {
-    setSetsCount(setsCount+1)
-  }
-
-  const decrementTime = () => {
-    if(time === 0) return
-    setTime(time - 0.5)
-  }
-
-  const incrementTime = () => {
-    setTime(time + 0.5)
-  }
-
-  const decrementWeight = () => {
-    if(weight === 0) return
-    setWeight(weight - 2.5)
-  }
-
-  const incrementWeight = () => {
-    setWeight(weight + 2.5)
-  }
-
   const onNotesChange = (e) => {
     setNotes(e.target.value);
   }
@@ -101,18 +48,18 @@ const Log = () => {
     setWorkout(e.target.value);
   }
 
-  const onDateChange = (date) => {
-    // setDate(dateFnsFormat(date, "yyyy-MM-dd"));
-  }
-
   const addLog = async () => {
+    console.log(formatDate(date))
+    return
+    
+    /* NEED BETTER VALIDATION */
     if(workout.length === 0 || date.length === 0){
       alert("Please fill out log properly...")
       return
     }
     const data = {
       id: uuidv4(),
-      date: date,
+      date: formatDate(date),
       workout: workout,
       sets: setsCount,
       reps: repCount,
@@ -141,43 +88,53 @@ const Log = () => {
   return (
     <div className='log-wrapper'>
       <div className="log-title">Log Your Workouts</div>
+      
       <div className="log-form">
-        <div id="log-form-item" className="input-wrapper">
-          <p id="log-form-label">Workout: </p>
-          <input id="log-form-item" type="text" name="workout-field" placeholder='Enter workout' onChange={(e) => onWorkoutChange(e)}/>
-        </div>
+        <div className="log-form-column-wrapper">
+          {/* FORM COLUMN 1*/}
+          <div className="log-form-column">
+            <div id="log-form-item" className="input-wrapper">
+              <input id="log-form-entry" type="text" name="workout-field" placeholder='Enter workout' onChange={(e) => onWorkoutChange(e)}/>
+            </div>
 
-        <div id="log-form-item" className="input-wrapper">
-          <p id="log-form-label">Sets: </p>
-          <Increment count={setsCount} increment={incrementSetsCount} decrement={decrementSetsCount}/>
-        </div>
+            <div id="log-form-item" className="input-wrapper">
+              <input id="log-form-entry" type="text" name="sets-field" placeholder='Enter sets' onChange={(e) => console.log(e.target.value)}/>
+            </div>
 
-        <div id="log-form-item" className="input-wrapper">
-          <p id="log-form-label">Reps: </p>
-          <Increment count={repCount} increment={incrementRepCount} decrement={decrementRepCount}/>
-        </div>
+            <div id="log-form-item" className="input-wrapper">
+              <input id="log-form-entry" type="text" name="reps-field" placeholder='Enter reps' onChange={(e) => console.log(e.target.value)}/>
+            </div>
 
-        <div id="log-form-item" className="input-wrapper">
-          <p id="log-form-label">Weight(lbs): </p>
-          <Increment count={weight} increment={incrementWeight} decrement={decrementWeight}/>
-        </div>
+            <div id="log-form-item" className="input-wrapper">
+              <input id="log-form-entry" type="text" name="weight-field" placeholder='Enter weight' onChange={(e) => console.log(e.target.value)}/>
+            </div>
 
-        <div id="log-form-item" className="input-wrapper">
-          <p id="log-form-label">Time(min): </p>
-          <Increment count={time} increment={incrementTime} decrement={decrementTime}/>
-        </div>
-        
-        <div id="log-form-item" className='date-picker-column-container'>
-          <p id="log-form-label">Date Posted: </p>
-          {/*<DayPickerInput formatDate={formatDate} parseDate={parseDate} format={"yyyy-MM-dd"} onDayChange={onDateChange} component={props => <input className="date-picker-input" placeholder="YYYY-MM-DD" {...props}/>} />*/}
-        </div>
+            <div id="log-form-item" className="input-wrapper">
+              <input id="log-form-entry" type="text" name="time-field" placeholder='Enter time' onChange={(e) => console.log(e.target.value)}/>
+            </div>
 
-        <div>
-          <div id="log-form-item">
-            <p id="log-form-label">Additional Notes: </p>
-            <input type="text" className='log-form-notes' placeholder='Enter notes' onChange={(e) => onNotesChange(e)}/>
+            <div id="log-form-item">
+              <input id="log-form-entry" type="text" className='log-form-notes' placeholder='Enter notes' onChange={(e) => onNotesChange(e)}/>
+            </div>
           </div>
-          <button onClick={addLog} id="log-form-item" className='log-form-add'>Log <FontAwesomeIcon icon={faCheck} /></button>
+
+          {/* FORM COLUMN 2 (DATE)*/}
+          <div className="log-form-column">
+            <DayPicker 
+              mode="single"
+              required
+              selected={date}
+              onSelect={setDate}
+              modifiersClassNames={{
+                selected: 'calendar-selected'
+              }}
+              styles={{
+                caption: { color: '#001D3D'},
+                day: { color: '#001D3D'}
+              }}/>
+
+              <button onClick={addLog} className='log-form-add-btn'>Log</button>
+          </div>
         </div>
       </div>
 
