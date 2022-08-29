@@ -1,0 +1,24 @@
+.footer-container{
+    width: 100%;
+    height: 300px;
+    background-color: #001D3D;
+    margin-top: 45px;
+}
+
+.icons-container {
+    width: 20%;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-icon {
+    color: #F4F3EE;
+    text-align: center;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.footer-icon:hover{
+    color: #f4f3eeae;
+}
