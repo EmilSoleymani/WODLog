@@ -35,6 +35,10 @@ const Header = () => {
 
           }
         </div>
+        <div className="login-signup-wrapper">
+          <button className="login-btn">Login</button>
+          <button className='signup-btn'>Sign Up</button>
+        </div>
       </div>
     </div>
   )

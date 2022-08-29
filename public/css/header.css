@@ -47,3 +47,49 @@
     width: 100%;
     transition: all 0.5s ease-in;
 }
+
+.login-signup-wrapper {
+    position: absolute;
+    right: 90px;
+    top: 50%;
+    transform: translate(0%, -50%);
+}
+
+.login-signup-wrapper button{
+    padding: 10px;
+}
+
+.login-btn {
+    background-color: transparent;
+    border-color: transparent;
+    cursor: pointer;
+    font-size: 16px;
+    margin-right: 20px;
+    color: #001D3D;
+    transition: all 0.3s ease-in-out;
+}
+
+.login-btn:hover{
+    border-bottom-color: #001D3D;
+    border-bottom-width: 1px;
+    padding-bottom: 2px;
+    padding-right: 2px;
+    padding-left: 2px;
+    margin-right: 28px;
+}
+
+.signup-btn {
+    background-color: transparent;
+    border-color: #001D3D;
+    border-width: 2px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #001D3D;
+    transition: all 0.3s ease-in-out;
+}
+
+.signup-btn:hover {
+    background-color: #001D3D;
+    color: #F4F3EE;
+}

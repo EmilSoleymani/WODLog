@@ -67,9 +67,7 @@
 }
 
 .logworkout-btn-container button:hover{
-    background: #507DBC;
-}
-
-#logworkout-btn:hover + #logworkout-btn-txt{
-    color: #507DBC;
+    background: #F4F3EE;
+    color: #001D3D;
+    border-color: #001D3D;
 }
