@@ -7,9 +7,9 @@ const Footer = () => {
     <div className="footer-container">
         <div className="inquiries-container">
             <h3 className="inquiries-title">Inquiries</h3>
-            <label className="inquiries-emil">Emil Soleymani | 647-922-5184 | soleymae@mcmaster.ca</label>
+            <label className="inquiries-emil">Emil Soleymani ♦ 647-922-5184 ♦ soleymae@mcmaster.ca</label>
             <br></br>
-            <label className="inquiries-sam">Samarth Mehta | 647-389-8974 | mehtas30@mcmaster.ca</label>
+            <label className="inquiries-sam">Samarth Mehta ♦ 647-389-8974 ♦ mehtas30@mcmaster.ca</label>
             <p className="footer-copyright">Copyright 2022 <FontAwesomeIcon icon={faCopyright}/> Emil Soleymani and Samarth Mehta. All Rights Reserved.</p>
         </div>
         <div className="icons-container">

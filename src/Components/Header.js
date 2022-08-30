@@ -3,6 +3,7 @@ import React from 'react'
 // Font Awesome
 import { faDumbbell } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import menuLinks from '../Data/menuLinks.json'
 
 // Add this back when we are reimplementing React router

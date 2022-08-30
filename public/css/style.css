@@ -1,6 +1,12 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #F4F3EE;
+    background-color: #F1F0EB;
     overscroll-behavior-y: none; 
 }
+
+/*
+    Background color options:
+        #EEEDE9
+        #F1F0EB
+*/

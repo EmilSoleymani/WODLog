@@ -1,0 +1,16 @@
+[
+    {
+        "name": "Push Pull Leg (PPL)",
+        "splits": "Push, Pull, Leg",
+        "days": 6,
+        "time": 60,
+        "intensity": 3
+    },
+    {
+        "name": "Strong Lifts V2",
+        "splits": "Full Body",
+        "days": 5,
+        "time": 90,
+        "intensity": 5
+    }
+]
