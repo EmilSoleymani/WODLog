@@ -19,9 +19,8 @@
 }
 
 .nav-wrapper{
+    margin: auto;
     margin-left: 95px;
-    justify-self: center;
-    justify-items: center;
 }
 
 .nav-item{
@@ -30,11 +29,14 @@
     color: #001D3D;
     padding: 10px 20px;
     cursor: pointer;
+    margin: auto;
 }
 
-.nav-item p {
+.nav-item-link {
     margin-bottom: 2px;
     font-size: 20px;
+    text-decoration: none;
+    color: #001D3D;
 }
 
 .nav-line{
