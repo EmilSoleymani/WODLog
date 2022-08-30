@@ -1,8 +1,9 @@
 .programs-wrapper {
-    margin-top: 145px;
+    margin-top: 105px;
+    display: flex;
 }
 
-.programs-trending {
+.programs-trending, .programs-recommended {
     width: 65%;
     margin: auto;
 }
@@ -29,9 +30,9 @@
     color: #003566;
 }
 
-.programs-trending-title{
+.programs-trending-title, .programs-recommended-title{
     color: #003566;
-    font-size: 45px;
+    font-size: 35px;
     text-align: center;
 }
 
