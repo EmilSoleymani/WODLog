@@ -1,0 +1,120 @@
+.programs-wrapper {
+    margin-top: 145px;
+}
+
+.programs-trending {
+    width: 65%;
+    margin: auto;
+}
+
+.program-header-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.program-star-icon {
+    color: #0035669f;
+    margin: auto;
+    margin-right: 0px;
+    cursor: pointer;
+}
+
+.program-star-icon:hover {
+    color: #003566;
+    transition: all 0.3s ease-in-out;
+}
+
+#program-star-starred {
+    color: #003566;
+}
+
+.programs-trending-title{
+    color: #003566;
+    font-size: 45px;
+    text-align: center;
+}
+
+#program-entry {
+    margin: auto;
+    width: 55%;
+    padding: 5px 15px;
+    background: #F4F3EE;
+    box-shadow: 0px 2px 4px 1px rgba(0, 0, 0, 0.25);
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.program-name {
+    color: #003566;
+    font-size: 29px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.program-splits {
+    color: rgba(0, 29, 61, 0.55);
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 16px;
+    margin-top: 5px;
+}
+
+.program-desc {
+    color: #003566;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 22px;
+}
+
+.program-footer-wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+.program-intensity-wrapper{ /*For vertical alignment*/
+    margin: auto;
+    margin-left: 0px;
+}
+
+.program-intensity-icon {
+    color: #FFC300;
+    font-size: 25px;
+}
+
+.program-select-btn {
+    color: #F4F3EE;
+    background-color: #003566;
+    border-color: transparent;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.program-select-btn:hover {
+    background-color: #F4F3EE;
+    color: #003566;
+    border-color: #003566;
+}
+
+.program-footer-line{
+    background-color: #003566;
+    width: 0%;
+    height: 2px;
+    margin-bottom: 0px;
+    margin-top: 5px;
+}
+
+#program-entry:hover .program-footer-line{
+    width: 100%;
+    transition: all 0.5s ease-in-out;
+}
