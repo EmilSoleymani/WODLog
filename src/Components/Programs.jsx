@@ -7,9 +7,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Programs = () => {
 
-  const selectProgram = (index) => {
-    const program = trendingProgramsData[index]
-    console.log(program)
+  const selectProgram = (programList, index) => {
+    const selectedProgram = programList[index]
+    console.log(selectedProgram)
   }
 
   return (
@@ -36,7 +36,7 @@ const Programs = () => {
                                         })
                                     }
                                 </div>
-                                <button className="program-select-btn" onClick={(e) => selectProgram(index)}>Select Program</button>
+                                <button className="program-select-btn" onClick={(e) => selectProgram(trendingProgramsData,index)}>Select Program</button>
                             </div>
                             <div className="program-footer-line"></div>
                         </div>
@@ -66,7 +66,7 @@ const Programs = () => {
                                         })
                                     }
                                 </div>
-                                <button className="program-select-btn" onClick={(e) => selectProgram(index)}>Select Program</button>
+                                <button className="program-select-btn" onClick={(e) => selectProgram(recommendedProgramsData,index)}>Select Program</button>
                             </div>
                             <div className="program-footer-line"></div>
                         </div>
