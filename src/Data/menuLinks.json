@@ -1,14 +1,14 @@
 [
     {
         "label": "Welcome",
-        "href": "link here"
+        "href": "/"
     },
     {
         "label": "Log",
-        "href": "link here"
+        "href": "/log"
     },
     {
         "label": "Programs",
-        "href": "link here"
+        "href": "/programs"
     }
 ]
