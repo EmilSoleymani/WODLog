@@ -18,6 +18,11 @@
     cursor: pointer;
 }
 
+.header-title:hover .header-icon{
+    transform: translateY(-7px);
+    transition: all 0.3s ease-in-out;
+}
+
 .nav-wrapper{
     margin: auto;
     margin-left: 95px;
