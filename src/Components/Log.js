@@ -3,15 +3,44 @@ import { useState, useEffect } from "react"
 import { v4 as uuidv4 } from 'uuid';
 
 // Components
-// import LogItem from './LogItem';
+import LogItem from './LogItem'
 
 // DayPicker
 import { DayPicker } from 'react-day-picker';
 import 'react-day-picker/dist/style.css';
 import { format } from 'date-fns';
 
+/*
+  Formats date to WODLog format
+*/
 function formatDate(newDate) {
   return format(newDate, "MM/dd/yyyy")
+}
+
+/*
+  Returns true iff String value val is a valid float
+*/
+function isFloat(val) {
+  var floatRegex = /^-?\d+(?:[.,]\d*?)?$/;
+  if (!floatRegex.test(val))
+      return false;
+
+  val = parseFloat(val);
+  if (isNaN(val))
+      return false;
+  return true;
+}
+
+/*
+  Returns true iff String value val is a valid integer
+*/
+function isInt(val) {
+  var intRegex = /^-?\d+$/;
+  if (!intRegex.test(val))
+      return false;
+
+  var intVal = parseInt(val, 10);
+  return parseFloat(val) == intVal && !isNaN(intVal);
 }
 
 const Log = () => {
@@ -48,25 +77,70 @@ const Log = () => {
     setWorkout(e.target.value);
   }
 
-  const addLog = async () => {
-    console.log(formatDate(date))
-    return
-    
-    /* NEED BETTER VALIDATION */
-    if(workout.length === 0 || date.length === 0){
-      alert("Please fill out log properly...")
+  const addLog = async () => {  
+    if(workout.length === 0){
+      alert("Please fill enter a workout name.")
       return
     }
+
+    let sets, reps, workoutTime, workoutWeight
+
+    if(!isInt(setsCount)){
+      alert("Sets must be a valid integer value.")
+      return
+    }
+    if(!isInt(repCount)){
+      alert("Reps must be a valid integer value.")
+      return
+    }
+    if(!isFloat(weight)){
+      alert("Weight must be a valid float value.")
+      return
+    }
+    if(!isFloat(time)){
+      alert("Time must be a valid float value.")
+      return
+    }
+    
+    sets = parseInt(setsCount)
+    reps = parseInt(repCount)
+    workoutWeight = parseFloat(weight)
+    workoutTime = parseFloat(time)
+    
+    if(sets <= 0){
+      alert("Sets must be a positive value.")
+      return
+    }
+    if(reps <= 0){
+      alert("Reps must be a positive value.")
+      return
+    }
+    if(workoutWeight <= 0){
+      alert("Weight must be a positive value.")
+      return
+    }
+    if(workoutTime <= 0){
+      alert("Time must be a positive value.")
+      return
+    }
+
+    let notes_ = notes
+    if(notes_.length === 0){
+      notes_ = "None"
+    }
+
     const data = {
       id: uuidv4(),
       date: formatDate(date),
       workout: workout,
-      sets: setsCount,
-      reps: repCount,
-      weight: weight,
-      time: time,
-      notes: notes
+      sets: sets,
+      reps: reps,
+      weight: workoutWeight,
+      time: workoutTime,
+      notes: notes_
     }
+
+    /*
     const response = await fetch("http://localhost:5000/logs", {
       method: "POST",
       headers: {
@@ -74,14 +148,17 @@ const Log = () => {
       },
       body: JSON.stringify(data)
     })
+    */
+    
     setLogList([...logList, data])
   }
 
   const deleteLog = async (id) => {
+    /*
     await fetch(`http://localhost:5000/logs/${id}`, {
       method: "DELETE"
     })
-    console.log(id)
+    */
     setLogList(logList.filter((log) => log.id !== id))
   }
 
@@ -98,19 +175,19 @@ const Log = () => {
             </div>
 
             <div id="log-form-item" className="input-wrapper">
-              <input id="log-form-entry" type="text" name="sets-field" placeholder='Enter sets' onChange={(e) => console.log(e.target.value)}/>
+              <input id="log-form-entry" type="text" name="sets-field" placeholder='Enter sets' onChange={(e) => setSetsCount(e.target.value)}/>
             </div>
 
             <div id="log-form-item" className="input-wrapper">
-              <input id="log-form-entry" type="text" name="reps-field" placeholder='Enter reps' onChange={(e) => console.log(e.target.value)}/>
+              <input id="log-form-entry" type="text" name="reps-field" placeholder='Enter reps' onChange={(e) => setRepCount(e.target.value)}/>
             </div>
 
             <div id="log-form-item" className="input-wrapper">
-              <input id="log-form-entry" type="text" name="weight-field" placeholder='Enter weight' onChange={(e) => console.log(e.target.value)}/>
+              <input id="log-form-entry" type="text" name="weight-field" placeholder='Enter weight' onChange={(e) => setWeight(e.target.value)}/>
             </div>
 
             <div id="log-form-item" className="input-wrapper">
-              <input id="log-form-entry" type="text" name="time-field" placeholder='Enter time' onChange={(e) => console.log(e.target.value)}/>
+              <input id="log-form-entry" type="text" name="time-field" placeholder='Enter time' onChange={(e) => setTime(e.target.value)}/>
             </div>
 
             <div id="log-form-item">
@@ -138,13 +215,22 @@ const Log = () => {
         </div>
       </div>
 
+      <div className="log-seperate-line"></div>
+
+      { // Display log entries
+      logList.length > 0 &&
       <div className='log-entries-wrapper'>
         {logList.map((item, index) => (
-          <div key={item.id} className='logitem-id-eventWrapper'>
-            {/*<LogItem data={item} remove={deleteLog}/>*/}
+          <div key={`LogEntry{${item.id}}`} className='logitem-id-eventWrapper'>
+            <LogItem data={item} remove={deleteLog}/>
+            {   // Render a line to separate logs if not last log
+              item.id !== logList[logList.length-1].id &&
+              <div className="log-item-line"></div>
+            }
           </div>
         ))}
       </div>
+      }
     </div>
   )
 }
