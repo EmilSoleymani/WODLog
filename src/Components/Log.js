@@ -208,7 +208,7 @@ const Log = () => {
                 selected: 'calendar-selected'
               }}
               styles={{
-                caption: { color: '#001D3D'},
+                caption: { color: '#001D3D', zIndex: "10"},
                 day: { color: '#001D3D'}
               }}/>
 
