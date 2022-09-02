@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from "react"
 import { v4 as uuidv4 } from 'uuid';
+import Axios from 'axios';
 
 // Components
 import LogItem from './LogItem'
@@ -40,8 +41,11 @@ function isInt(val) {
       return false;
 
   var intVal = parseInt(val, 10);
-  return parseFloat(val) == intVal && !isNaN(intVal);
+  return parseFloat(val) === intVal && !isNaN(intVal);
 }
+
+// API Endpoint
+const host = "http://3.88.113.211:3001"
 
 const Log = () => {
   const [date, setDate] = useState(new Date())
@@ -54,19 +58,17 @@ const Log = () => {
   const [logList, setLogList] = useState([])
 
   // Fetch logs from JSON backend
-  const fetchLog = async () => {
-    const response = await fetch('http://localhost:5000/logs')
-    const data = await response.json()
-
-    return data
+  const fetchLog = async (user) => {
+    return await Axios.get(host+`/logs/${user}?orderby=date`)
   }
 
   useEffect(() => {
-    const getLogs = async () => {
-        const logsFromBackend = await fetchLog()
-        setLogList(logsFromBackend)
+    const getLogs = async (user) => {
+        const response = await fetchLog(user)
+        const data = response.data
+        setLogList(data)
     }
-    //getLogs()
+    getLogs("Emil")
   }, [])
 
   const onNotesChange = (e) => {
@@ -130,7 +132,7 @@ const Log = () => {
     }
 
     const data = {
-      id: uuidv4(),
+      log_id: uuidv4(),
       date: formatDate(date),
       workout: workout,
       sets: sets,
@@ -140,26 +142,26 @@ const Log = () => {
       notes: notes_
     }
 
-    /*
-    const response = await fetch("http://localhost:5000/logs", {
-      method: "POST",
-      headers: {
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify(data)
+    const response = await Axios.post(host+"/newLog", {
+      log_id: data.log_id,
+      date: data.date,
+      workout: data.workout,
+      sets: data.sets,
+      reps: data.reps,
+      weight: data.weight,
+      time: data.time,
+      user: "Emil",
+      notes: data.notes
     })
-    */
+
+    console.log(response.data)
     
     setLogList([...logList, data])
   }
 
-  const deleteLog = async (id) => {
-    /*
-    await fetch(`http://localhost:5000/logs/${id}`, {
-      method: "DELETE"
-    })
-    */
-    setLogList(logList.filter((log) => log.id !== id))
+  const deleteLog = async (log_id) => {
+    await Axios.delete(host+`/delete/${log_id}`)
+    setLogList(logList.filter((log) => log.log_id !== log_id))
   }
 
   return (
@@ -221,10 +223,10 @@ const Log = () => {
       logList.length > 0 &&
       <div className='log-entries-wrapper'>
         {logList.map((item, index) => (
-          <div key={`LogEntry{${item.id}}`} className='logitem-id-eventWrapper'>
+          <div key={`LogEntry{${item.log_id}}`} className='logitem-id-eventWrapper'>
             <LogItem data={item} remove={deleteLog}/>
             {   // Render a line to separate logs if not last log
-              item.id !== logList[logList.length-1].id &&
+              item.log_id !== logList[logList.length-1].log_id &&
               <div className="log-item-line"></div>
             }
           </div>

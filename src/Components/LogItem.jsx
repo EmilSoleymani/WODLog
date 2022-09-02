@@ -41,7 +41,7 @@ const LogItem = ({data, remove}) => {
             <div>{data.notes}</div>
         </div>
 
-        <div className="log-item-delete" onClick={(e) => remove(data.id)}>
+        <div className="log-item-delete" onClick={(e) => remove(data.log_id)}>
             <FontAwesomeIcon icon={faTrash}/>
         </div>
     </div>
