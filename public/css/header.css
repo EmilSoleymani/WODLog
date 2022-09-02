@@ -4,6 +4,8 @@
     position: fixed;
     display: flex;
     top: 0;
+    left: 0;
+    z-index: 1000;
     width: 100%;
     background: #F4F3EE;
     color: #001D3D;
