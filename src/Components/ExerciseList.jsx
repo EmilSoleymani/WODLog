@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState, useEffect } from "react"
+import { useState } from "react"
 
 // Components
 import NewExerciseModal from './NewExerciseModal'
@@ -7,6 +7,10 @@ import NewExerciseModal from './NewExerciseModal'
 // DayPicker
 import 'react-day-picker/dist/style.css';
 import { format } from 'date-fns';
+
+// FontAwesome
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faTrash } from "@fortawesome/free-solid-svg-icons"
 
 /*
   Formats date to WODLog format
@@ -44,9 +48,10 @@ function isInt(val) {
 // API Endpoint
 const host = "http://3.88.113.211:3001"
 
-const Log = () => {
+const ExerciseList = () => {
   const [currentNavOption, setCurrentNavOption] = useState(0)
   const [newExerciseModal, setNewExerciseModal] = useState(false)
+  const [exercises, setExercises] = useState([{name: "Bicep Curl"}, {name: "Dumbell Bench Press"}])
 
   /*
   // Fetch logs from JSON backend
@@ -164,6 +169,10 @@ const Log = () => {
     baseline.style.transform = option === 0 ? "translateX(0%)" : "translateX(100%)"
   }
 
+  const addExercise = (exercise) => {
+    setExercises([...exercises, exercise])
+  }
+
   return (
     <div className='log-wrapper'>
       <div className="log-title">Log Your Workouts</div>
@@ -183,9 +192,27 @@ const Log = () => {
       </div>
 
       <div className="new-exercise-btn" onClick={(e) => setNewExerciseModal(true)}>New Exercise</div>
-      {newExerciseModal && <NewExerciseModal setShowModal={setNewExerciseModal}/>}
+      {newExerciseModal && <NewExerciseModal setShowModal={setNewExerciseModal} addExercise={addExercise} />}
+
+      { /* EXERCISE LIST */
+        exercises.length > 0 && 
+
+        <div className="exercise-list-container">
+          {
+            exercises.map((exercise, i) => {
+              return(
+                <div key={`exercise_${i}`} className="exercise-list-entry">
+                    <p className='exercise-list-entry-name'>{exercise.name}</p>
+
+                    <FontAwesomeIcon icon={faTrash} className="exercise-list-entry-delete-btn"/>
+                </div>
+              )
+            })
+          }
+        </div>
+      }
     </div>
   )
 }
 
-export default Log
+export default ExerciseList
