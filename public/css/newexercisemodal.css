@@ -1,0 +1,70 @@
+#portal .new-exercise-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 10000;
+}
+
+.new-exercise-container .new-exercise-modal-container{
+    z-index: 1;
+    padding: 25px;
+    background: #F4F3EE;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+    border-style: solid;
+    border-color: #001D3D;
+    border-radius: 5px;
+    position: relative;
+    animation: animate 0.5s ease-in-out;
+}
+
+@keyframes animate {
+    from {
+        transform: scale(0.5);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+.new-exercise-modal-title{
+    font-size: 45px;
+    margin-top: 5px;
+    color: #001D3D;
+}
+
+.new-exercise-modal-btn-container {
+    width: 75%;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 15px;
+}
+
+.new-exercise-modal-btn-container button {
+    margin: auto;
+    color: #F1F0EB;
+    border-style: solid;
+    border-color: #F1F0EB;
+    border-width: 1px;
+    padding: 5px 15px;
+    border-radius: 5px;
+    background-color: #003566;
+    cursor: pointer;
+}
+
+.new-exercise-modal-btn-container button:hover{
+    background-color: #F1F0EB;
+    border-color: #003566;
+    color: #003566;
+    transition: all 0.3s ease-in-out;
+}

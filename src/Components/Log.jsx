@@ -1,13 +1,10 @@
 import React from 'react'
 import { useState, useEffect } from "react"
-import { v4 as uuidv4 } from 'uuid';
-import Axios from 'axios';
 
 // Components
-import LogItem from './LogItem'
+import NewExerciseModal from './NewExerciseModal'
 
 // DayPicker
-import { DayPicker } from 'react-day-picker';
 import 'react-day-picker/dist/style.css';
 import { format } from 'date-fns';
 
@@ -48,15 +45,10 @@ function isInt(val) {
 const host = "http://3.88.113.211:3001"
 
 const Log = () => {
-  const [date, setDate] = useState(new Date())
-  const [workout, setWorkout] = useState("")
-  const [repCount, setRepCount] = useState(0) 
-  const [setsCount, setSetsCount] = useState(0)
-  const [time, setTime] = useState(0);
-  const [notes, setNotes] = useState("")
-  const [weight, setWeight] = useState(45)
-  const [logList, setLogList] = useState([])
+  const [currentNavOption, setCurrentNavOption] = useState(0)
+  const [newExerciseModal, setNewExerciseModal] = useState(false)
 
+  /*
   // Fetch logs from JSON backend
   const fetchLog = async (user) => {
     return await Axios.get(host+`/logs/${user}?orderby=date`)
@@ -68,7 +60,7 @@ const Log = () => {
         const data = response.data
         setLogList(data)
     }
-    getLogs("Emil")
+    // getLogs("Emil")
   }, [])
 
   const onNotesChange = (e) => {
@@ -163,76 +155,35 @@ const Log = () => {
     await Axios.delete(host+`/delete/${log_id}`)
     setLogList(logList.filter((log) => log.log_id !== log_id))
   }
+  */
+
+  const onNavClick = (option) => {
+    setCurrentNavOption(option)
+
+    var baseline = document.getElementById('log-nav-selected-baseline')
+    baseline.style.transform = option === 0 ? "translateX(0%)" : "translateX(100%)"
+  }
 
   return (
     <div className='log-wrapper'>
       <div className="log-title">Log Your Workouts</div>
       
-      <div className="log-form">
-        <div className="log-form-column-wrapper">
-          {/* FORM COLUMN 1*/}
-          <div className="log-form-column">
-            <div id="log-form-item" className="input-wrapper">
-              <input id="log-form-entry" type="text" name="workout-field" placeholder='Enter workout' onChange={(e) => onWorkoutChange(e)}/>
-            </div>
-
-            <div id="log-form-item" className="input-wrapper">
-              <input id="log-form-entry" type="text" name="sets-field" placeholder='Enter sets' onChange={(e) => setSetsCount(e.target.value)}/>
-            </div>
-
-            <div id="log-form-item" className="input-wrapper">
-              <input id="log-form-entry" type="text" name="reps-field" placeholder='Enter reps' onChange={(e) => setRepCount(e.target.value)}/>
-            </div>
-
-            <div id="log-form-item" className="input-wrapper">
-              <input id="log-form-entry" type="text" name="weight-field" placeholder='Enter weight' onChange={(e) => setWeight(e.target.value)}/>
-            </div>
-
-            <div id="log-form-item" className="input-wrapper">
-              <input id="log-form-entry" type="text" name="time-field" placeholder='Enter time' onChange={(e) => setTime(e.target.value)}/>
-            </div>
-
-            <div id="log-form-item">
-              <input id="log-form-entry" type="text" className='log-form-notes' placeholder='Enter notes' onChange={(e) => onNotesChange(e)}/>
-            </div>
+      {/* NAVBAR */}
+      <div className="log-nav-wrapper">
+        <div className="log-nav-container">
+          <div className="log-nav-link" id={currentNavOption === 0 ? "log-nav-selected": ""} onClick={(e) => onNavClick(0)}>
+            Exercises
           </div>
-
-          {/* FORM COLUMN 2 (DATE)*/}
-          <div className="log-form-column">
-            <DayPicker 
-              mode="single"
-              required
-              selected={date}
-              onSelect={setDate}
-              modifiersClassNames={{
-                selected: 'calendar-selected'
-              }}
-              styles={{
-                caption: { color: '#001D3D', zIndex: "10"},
-                day: { color: '#001D3D'}
-              }}/>
-
-              <button onClick={addLog} className='log-form-add-btn'>Log</button>
+          <div className="log-nav-link" id={currentNavOption === 1 ? "log-nav-selected": ""} onClick={(e) => onNavClick(1)}>
+            Programs
           </div>
         </div>
+        <div className="log-nav-baseline"></div>
+        <div id="log-nav-selected-baseline"></div>
       </div>
 
-      <div className="log-seperate-line"></div>
-
-      { // Display log entries
-      logList.length > 0 &&
-      <div className='log-entries-wrapper'>
-        {logList.map((item, index) => (
-          <div key={`LogEntry{${item.log_id}}`} className='logitem-id-eventWrapper'>
-            <LogItem data={item} remove={deleteLog}/>
-            {   // Render a line to separate logs if not last log
-              item.log_id !== logList[logList.length-1].log_id &&
-              <div className="log-item-line"></div>
-            }
-          </div>
-        ))}
-      </div>
-      }
+      <div className="new-exercise-btn" onClick={(e) => setNewExerciseModal(true)}>New Exercise</div>
+      {newExerciseModal && <NewExerciseModal setShowModal={setNewExerciseModal}/>}
     </div>
   )
 }
