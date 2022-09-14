@@ -4,7 +4,7 @@
     width: 85%;
     height: 65%;
     margin: auto;
-    margin-top: 145px;
+    margin-top: 15vh;
     display: flex;
     padding: 20px;
     background-color: #F4F3EE;
@@ -134,6 +134,7 @@
     font-size: 16px;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
+    margin-bottom: 45px;
 }
 
 .signup-msg-btn:hover {

@@ -1,6 +1,7 @@
 import Footer from "./Components/Footer";
 import Header from "./Components/Header";
 import ExerciseList from "./Components/ExerciseList";
+import Exercise from "./Components/Exercise";
 import Programs from "./Components/Programs";
 import Welcome from "./Components/Welcome";
 
@@ -12,7 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Welcome/>}/>
         <Route path="/log" element={<ExerciseList/>}/>
-        <Route path="/log/:exercise" element={<ExerciseList/>}/>
+        <Route path="/log/:exercise" element={<Exercise/>}/>
         <Route path="/programs" element={<Programs/>}/>
       </Routes>
       <Header/>

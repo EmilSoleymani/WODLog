@@ -1,6 +1,9 @@
 import React from 'react'
 import { useState } from "react"
 
+// Router
+import { Link } from 'react-router-dom';
+
 // Components
 import NewExerciseModal from './NewExerciseModal'
 
@@ -162,6 +165,12 @@ const ExerciseList = () => {
   }
   */
 
+  /**
+   * Sets highlighted nav component to nav link that was clicked. Applies CSS
+   * transformation to slide bar under corresponding link.
+   * 
+   * @param {*} option specifies which nav option was clicked
+   */
   const onNavClick = (option) => {
     setCurrentNavOption(option)
 
@@ -169,6 +178,11 @@ const ExerciseList = () => {
     baseline.style.transform = option === 0 ? "translateX(0%)" : "translateX(100%)"
   }
 
+  /**
+   * Adds a new exercise to the list of current exercises
+   * 
+   * @param {*} exercise New exercise to be added
+   */
   const addExercise = (exercise) => {
     setExercises([...exercises, exercise])
   }
@@ -194,23 +208,22 @@ const ExerciseList = () => {
       <div className="new-exercise-btn" onClick={(e) => setNewExerciseModal(true)}>New Exercise</div>
       {newExerciseModal && <NewExerciseModal setShowModal={setNewExerciseModal} addExercise={addExercise} />}
 
-      { /* EXERCISE LIST */
-        exercises.length > 0 && 
-
-        <div className="exercise-list-container">
-          {
+      { /* EXERCISE LIST */}
+      <div className="exercise-list-container">
+        {
+          exercises.length > 0 && 
+          
             exercises.map((exercise, i) => {
               return(
                 <div key={`exercise_${i}`} className="exercise-list-entry">
-                    <p className='exercise-list-entry-name'>{exercise.name}</p>
+                    <Link to={`/log/${exercise.name.replace(/ /g,"_")}`} className='exercise-list-entry-name'>{exercise.name}</Link>
 
                     <FontAwesomeIcon icon={faTrash} className="exercise-list-entry-delete-btn"/>
                 </div>
               )
             })
-          }
-        </div>
-      }
+        }
+      </div>
     </div>
   )
 }
