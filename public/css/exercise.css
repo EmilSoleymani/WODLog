@@ -1,3 +1,120 @@
 .exercise-container {
     margin-top: 15vh;
+    min-height: 65vh;
+}
+
+.exercise-title {
+    font-size: 55px;
+    text-align: center;
+    color: #001D3D;
+}
+
+/************** New Log Btn/Modal***************/
+.new-log-btn {
+    width: 10%;
+    text-align: center;
+    margin: auto;
+    margin-top: 35px;
+    color: #003566;
+    border-style: solid;
+    border-color: #003566;
+    border-width: 1px;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.new-log-btn:hover{
+    background-color: #003566;
+    border-color: #F1F0EB;
+    color: #F1F0EB;
+    transition: all 0.3s ease-in-out;
+}
+
+/***************** EXERCISE LOGS ********************/
+
+.log-container {
+    width: 80%;
+    margin: auto;
+    margin-top: 20px;
+    padding: 15px;
+}
+
+.log-header {
+    display: flex;
+    justify-content: space-between;
+    color: #001D3D;
+    padding-bottom: 3px;
+    border-style: solid;
+    border-color: #F1F0EB;
+    border-bottom-color: #001D3D;
+    border-width: 1px;
+}
+
+.log-header-righthand{
+    display: flex;
+    width: 10vw;
+    justify-content: space-between;
+}
+
+.log-header-date {
+    font-size: large;
+    margin: auto;
+    margin-left: 0px;
+}
+
+.log-header-timestamp {
+    font-size: large;
+    margin: auto;
+    margin-right: 5px;
+}
+
+.log-header-options {
+    font-size: large;
+    margin: auto;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.log-header-options:hover {
+    color: #003566;
+    transition: all 0.3s ease-in;
+}
+
+.log-sets-container {
+    display: flex;
+    font-size: medium;
+    padding: 0px;
+    margin-top: 10px;
+    margin-left: 5px;
+}
+
+.log-sets-setindex {
+    color: #00356657;
+    padding: 0px;
+    margin-bottom: 5px;
+    margin-top: -5px;
+}
+
+.log-sets-reps {
+    color: #003566;
+    margin-left: 15px;
+    margin-bottom: 5px;
+    margin-top: -5px;
+    padding: 0px;
+}
+
+.log-notes-container {
+    display: flex;
+    margin-left: 5px;
+}
+
+.log-notes-label {
+    color: #00356657;
+    padding: 0px;
+}
+
+.log-notes {
+    color: #003566;
+    margin-left: 15px;
 }

@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { useState } from "react";
 import ReactDom from "react-dom";
 
-const NewExerciseModal = ({ setShowModal, addExercise }) => {
+const NewLogModal = ({ setShowModal, addLog }) => {
   // close the modal when clicking outside the modal.
   const modalRef = useRef();
 
@@ -21,7 +21,7 @@ const NewExerciseModal = ({ setShowModal, addExercise }) => {
         return
       }
       /* TODO: Check for name uniqueness */
-      addExercise({url: name.replace(/ /g,"_"),name: name})
+      addLog({url: name.replace(/ /g,"_"),name: name})
       setShowModal(false)
   }
 
@@ -29,7 +29,7 @@ const NewExerciseModal = ({ setShowModal, addExercise }) => {
   return ReactDom.createPortal(
     <div className="new-exercise-container" ref={modalRef} onClick={closeModal}>
       <div className="new-exercise-modal-container">
-        <h2 className="new-exercise-modal-title">New Exercise</h2>
+        <h2 className="new-exercise-modal-title">New Log</h2>
         
         <input type="text" className="new-exercise-modal-name" placeholder="Name" onChange={(e) => setName(e.target.value)}/>
         
@@ -43,4 +43,4 @@ const NewExerciseModal = ({ setShowModal, addExercise }) => {
   );
 };
 
-export default NewExerciseModal
+export default NewLogModal

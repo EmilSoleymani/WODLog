@@ -54,7 +54,7 @@ const host = "http://3.88.113.211:3001"
 const ExerciseList = () => {
   const [currentNavOption, setCurrentNavOption] = useState(0)
   const [newExerciseModal, setNewExerciseModal] = useState(false)
-  const [exercises, setExercises] = useState([{name: "Bicep Curl"}, {name: "Dumbell Bench Press"}])
+  const [exercises, setExercises] = useState([{url:"Bicep_Curl", name: "Bicep Curl"}, {url:"Dumbell_Bench_Press", name: "Dumbell Bench Press"}])
 
   /*
   // Fetch logs from JSON backend
@@ -205,25 +205,29 @@ const ExerciseList = () => {
         <div id="log-nav-selected-baseline"></div>
       </div>
 
-      <div className="new-exercise-btn" onClick={(e) => setNewExerciseModal(true)}>New Exercise</div>
-      {newExerciseModal && <NewExerciseModal setShowModal={setNewExerciseModal} addExercise={addExercise} />}
 
       { /* EXERCISE LIST */}
-      <div className="exercise-list-container">
-        {
-          exercises.length > 0 && 
-          
-            exercises.map((exercise, i) => {
-              return(
-                <div key={`exercise_${i}`} className="exercise-list-entry">
-                    <Link to={`/log/${exercise.name.replace(/ /g,"_")}`} className='exercise-list-entry-name'>{exercise.name}</Link>
+      { currentNavOption === 0 && 
+        <>
+          <div className="new-exercise-btn" onClick={(e) => setNewExerciseModal(true)}>New Exercise</div>
+          {newExerciseModal && <NewExerciseModal setShowModal={setNewExerciseModal} addExercise={addExercise} />}
+          <div className="exercise-list-container">
+            {
+              exercises.length > 0 && 
+              
+                exercises.map((exercise, i) => {
+                  return(
+                    <div key={`exercise_${i}`} className="exercise-list-entry">
+                        <Link to={`/log/${exercise.url}`} className='exercise-list-entry-name'>{exercise.name}</Link>
 
-                    <FontAwesomeIcon icon={faTrash} className="exercise-list-entry-delete-btn"/>
-                </div>
-              )
-            })
-        }
-      </div>
+                        <FontAwesomeIcon icon={faTrash} className="exercise-list-entry-delete-btn"/>
+                    </div>
+                  )
+                })
+            }
+          </div>
+        </>
+      }
     </div>
   )
 }
